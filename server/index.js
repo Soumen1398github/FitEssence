@@ -16,10 +16,7 @@ app.get('/pi', (req, res) => {
 });
 
 app.use(bodyParser.json());
-app.use(cors({
-  origin: "http://localhost:8080", // Your frontend origin
-  credentials: true               // Allow cookies/headers
-}));
+app.use(cors());
 app.use('/auth', authRouter);
 
 app.listen(PORT, () => {
