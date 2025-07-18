@@ -16,7 +16,12 @@ app.get('/pi', (req, res) => {
 });
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: (origin, callback) => {
+    callback(null, origin); // allow every origin (unsafe!)
+  },
+  credentials: true
+}));
 app.use('/auth', authRouter);
 
 app.listen(PORT, () => {
